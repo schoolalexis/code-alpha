@@ -6,8 +6,11 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var stylus = require("stylus");
 
-var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
+// var indexRouter = require("./routes/index");
+// var usersRouter = require("./routes/users");
+var homeRouter = require("./src/routes/home/index");
+var authRouter = require("./src/routes/auth/auth");
+var secureRouter = require("./src/routes/secure/secure");
 
 var app = express();
 
@@ -17,13 +20,19 @@ app.set("view engine", "ejs");
 
 app.use(logger("dev"));
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(stylus.middleware(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
+require("./src/config/database").connect();
+
+// app.use("/", indexRouter);
+// app.use("/users", usersRouter);
+app.use("/", homeRouter);
+app.use("/auth", authRouter);
+app.use("/secure", secureRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
