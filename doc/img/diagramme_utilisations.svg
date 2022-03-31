@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="377px" preserveAspectRatio="none" style="width:689px;height:377px;background:#FFFFFF;" version="1.1" viewBox="0 0 689 377" width="689px" zoomAndPan="magnify"><defs/><g><!--MD5=[225a11a356cb2db3802a7b30c3a51941]
+entity I--><g id="elem_I"><ellipse cx="56.5" cy="223.5" fill="#F1F1F1" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M56.5,231.5 L56.5,258.5 M43.5,239.5 L69.5,239.5 M56.5,258.5 L43.5,273.5 M56.5,258.5 L69.5,273.5 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="101" x="6" y="287.9951">intervenantes</text></g><!--MD5=[22029b2902cbfefb11350e8ee6e306b3]
+entity F--><g id="elem_F"><ellipse cx="56.5" cy="30.5" fill="#F1F1F1" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M56.5,38.5 L56.5,65.5 M43.5,46.5 L69.5,46.5 M56.5,65.5 L43.5,80.5 M56.5,65.5 L69.5,80.5 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="79" x="17" y="94.9951">nonhumain</text></g><g id="elem_UC0"><ellipse cx="425.6781" cy="166.1356" fill="#F1F1F1" rx="71.1781" ry="16.6356" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="96" x="374.6781" y="169.8832">Se connecter</text></g><g id="elem_UC1"><ellipse cx="425.7163" cy="252.8433" fill="#F1F1F1" rx="164.7163" ry="35.3433" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="301" x="275.2163" y="255.6899">Demande la réalisation d'une intervention</text></g><g id="elem_UC2"><ellipse cx="425.7482" cy="347.9496" fill="#F1F1F1" rx="107.7482" ry="23.9496" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="181" x="335.2482" y="350.7963">Passer le QRCode au scan</text></g><g id="elem_UC3"><ellipse cx="425.2723" cy="60.0545" fill="#F1F1F1" rx="258.2723" ry="54.0545" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="492" x="179.2723" y="62.9011">Scanner le QRCode / Envoyer les informations via API (code, heure...)</text></g><!--MD5=[b481f51e8736e806791948add0fa5a98]
+link I to UC0--><g id="link_I_UC0"><path d="M107.116,224.833 C125.422,215.567 146.667,206.091 167,200 C227.364,181.919 298.554,173.447 350.764,169.48 " fill="none" id="I-to-UC0" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="355.757,169.11,346.4856,165.787,350.7707,169.48,347.0777,173.7651,355.757,169.11" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[e90bc4e4920bc3c925635d2f3419b140]
+link I to UC1--><g id="link_I_UC1"><path d="M107.377,253 C145.919,253 201.638,253 255.653,253 " fill="none" id="I-to-UC1" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="260.874,253,251.874,249,255.874,253,251.874,257,260.874,253" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[f88f747b5c31d9eaf272d1fde78cce08]
+link I to UC2--><g id="link_I_UC2"><path d="M107.221,280.8258 C125.538,290.0581 146.762,299.6011 167,306 C216.483,321.6454 273.253,331.6994 320.874,338.0329 " fill="none" id="I-to-UC2" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="326.043,338.7105,317.6394,333.5744,321.0854,338.0605,316.5994,341.5066,326.043,338.7105" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[bc2723c532a9ecebc617e7890c107c62]
+link F to UC3--><g id="link_F_UC3"><path d="M96.0818,60 C113.853,60 136.602,60 161.82,60 " fill="none" id="F-to-UC3" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="166.896,60,157.896,56,161.896,60,157.896,64,166.896,60" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[8f00e26b928bf7f998596207a3d20e45]
+@startuml
+left to right direction
+
+actor intervenantes as I
+actor nonhumain as F
+
+usecase "Se connecter" as UC0
+usecase "Demande la réalisation d'une intervention" as UC1
+usecase "Passer le QRCode au scan" as UC2
+
+usecase "Scanner le QRCode / Envoyer les informations via API (code, heure...)" as UC3
+
+I - -> UC0
+I - -> UC1
+I - -> UC2
+
+F - -> UC3
+@enduml
+
+PlantUML version 1.2022.3beta2(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
