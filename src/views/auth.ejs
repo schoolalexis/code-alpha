@@ -1,0 +1,46 @@
+<div>
+    <% if (status) { %> 
+    <h1>Information !</h1>
+    <p>You're already connected !</p>
+    <% } else { %>
+        <h3>Login :</h3>
+        <form action="/auth/login" method="post">
+            <div>
+                <label for="email">Email :</label>
+                <input type="text" name="email" id="email" placeholder="Enter your email !">
+            </div>
+            <div>
+                <label for="code">Code :</label>
+                <input type="text" name="code" id="code" placeholder="Enter your code !">
+            </div>
+            <button type="submit">Login !</button>
+        </form>
+
+        <hr/>
+
+        <h3>Register :</h3>
+        <form action="/auth/register" method="post">
+            <div>
+                <label for="name">Name :</label>
+                <input type="text" name="name" id="name" placeholder="Enter your name !">
+            </div>
+            <div>
+                <label for="lastName">Last name :</label>
+                <input type="text" name="lastName" id="lastName" placeholder="Enter your last name !">
+            </div>
+            <div>
+                <label for="code">Code :</label>
+                <input type="text" name="code" id="code" placeholder="Enter your code !">
+            </div>
+            <div>
+                <label for="email">Email :</label>
+                <input type="text" name="email" id="email" placeholder="Enter your email !">
+            </div>
+            <div>
+                <label for="poste">Poste :</label>
+                <input type="text" name="poste" id="poste" placeholder="Enter your poste  !">
+            </div>
+            <button type="submit">Register !</button>
+        </form>
+    <% } %>
+</div>

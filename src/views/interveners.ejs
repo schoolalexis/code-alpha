@@ -1,0 +1,21 @@
+<%- include("./components/head") %>
+
+<div>
+    <table>
+        <% if(intervener.length) { %>
+        <tr>
+            <th># |</th>
+            <th>Name |</th>
+            <th>Last name |</th>
+            <th>Poste</th>
+        </tr>
+        <% for (let i = 0; i < intervener.length; i++) { %>
+        <tr>
+            <td><%= (i+1) %></td>
+            <td><%= intervener[i].name %></td>
+            <td><%= intervener[i].lastName %></td>
+            <td><%= intervener[i].poste %></td>
+        </tr>
+        <% }} %>
+    </table>
+</div>

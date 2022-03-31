@@ -1,0 +1,25 @@
+<%- include("./components/head") %>
+
+<div>
+    <table>
+        <% if(intervention.length) { %>
+        <tr>
+            <th># |</th>
+            <th>Room |</th>
+            <th>Date intervention |</th>
+            <th>Hour intervention |</th>
+            <th>Hour entry |</th>
+            <th>Hour exit</th>
+        </tr>
+        <% for (let i = 0; i < intervention.length; i++) { %>
+        <tr>
+            <td><%= (i+1) %></td>
+            <td><%= intervention[i].room %></td>
+            <td><%= intervention[i].dateInterv %></td>
+            <td><%= intervention[i].timeInterv %></td>
+            <td><%= intervention[i].timeEntry %></td>
+            <td><%= intervention[i].timeExit %></td>
+        </tr>
+        <% }} %>
+    </table>
+</div>

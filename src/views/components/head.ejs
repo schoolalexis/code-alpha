@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        <title>authQRCode</title>
+    </head>
+    <body>
+        <nav>
+            <div>
+                <ul>
+                    <li><a href="/">Home |</a></li>
+                    <% if (!status) { %>
+                    <li><a href="/auth">Register |</a></li>
+                    <li><a href="/auth">Login |</a></li>
+                    <% } else { %>
+                    <li><a href="/auth/logout">Logout</a></li>
+                    <% } %>
+                </ul>
+            </div>
+        </nav>
+    </body>
+</html>
