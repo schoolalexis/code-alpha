@@ -4,55 +4,60 @@
 
 ```js
 // modèle pour la collection `intervenantes`
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const intervenantesSchema = mongoose.Schema({
-	name: { type: String, required: true },
-	lastName: { type: String, required: true },
-	code: { type: Number, required: true },
-	email: { type: String, required: true },
-	poste: { type: String, required: true}
-})
+    name: { type: String, required: true },
+    lastName: { type: String, required: true },
+    code: { type: Number, required: true },
+    email: { type: String, required: true },
+    poste: { type: String, required: true },
+});
 
-module.exports = mongoose.model('Intervenantes', intervenantesSchema)
+module.exports = mongoose.model("Intervenantes", intervenantesSchema);
 ```
 
 ```js
 // modèle pour la collection `interventions`
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const interventionsSchema = mongoose.Schema({
-	code: { type: Number, required: true },
-	room: { type: Number, required: true },
-	date: { type: Number, required: true },
-	timePE: { type: Number, required: true },
-	timeE: { type: Number, required: true },
-	timeS: { type: String, required: true }
-	
-})
+    code: { type: Number, required: true },
+    room: { type: Number, required: true },
+    date: { type: Number, required: true },
+    timePE: { type: Number, required: true },
+    timeE: { type: Number, required: true },
+    timeS: { type: String, required: true },
+});
 
-module.exports = mongoose.model('interventions', interventionsScheme)
+module.exports = mongoose.model("interventions", interventionsScheme);
 ```
 
 ### Tableau URI (supportés par l'API)
 
-| HTTP Verb | Path              | Action   | Description                             |
-| --------- | ----------------- | -------- | --------------------------------------- |
-| GET       | `/`               | index    | Accès à la page d'acceuil               |
-| POST      | `/login`          | login    | Accès à la page de connexion            |
-| POST      | `/createqr`       | createqr | Accès à la page de génération du QRCode |
-| GET       | `/createsqr/scan` | createqr | Permet de la génération du QRCode       |
+| **Titre**                       | **URL**                 | **Méthode** | **Paramètres**                                                                                                                                                                                          | **Données en paramètres**                                                                                                             | **Réponse en cas de succès**                                                                                              | **Réponse en cas d'erreurs**                                                                                                                                                                       |
+|---------------------------------|-------------------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Page d'accueil                  | `/`                     | **GET**     |                                                                                                                                                                                                         |                                                                                                                                       |                                                                                                                           |                                                                                                                                                                                                    |
+| Page de connexion / inscription | `/auth`                 | **GET**     |                                                                                                                                                                                                         |                                                                                                                                       |                                                                                                                           |                                                                                                                                                                                                    |
+| Inscription                     | `/auth/register`        | **POST**    | <ul><li><strong>Requis:</strong></li><ul><li>name:[String]</li><li>lastName:[String]</li><li>code:[Number]</li><li>email:[String]</li><li>poste:[String]</il></ul>                                      | `{ "name": [String], "lastName": [String], "code": [Number], "email": [String], "poste": [String] }`                                  | <ul><li><strong>Code:</strong> 200</li><ul><li>Création réussite !</li></ul></ul>                                         | <ul><li><strong>Code:</strong> 500</li><ul><li>Erreur lors de la requête !</li></ul></ul><ul><li><strong>Code:</strong> 400</li><ul><li>Aucun intervenant créé !</li></ul></ul>                    |
+| Connexion                       | `/auth/login`           | **POST**    | <ul><li><strong>Requis:</strong><li>code:[Number]</li><li>email:[String]</li></ul>                                                                                                                      | `{ "code": [Number], "email": [String] }`                                                                                             | <ul><li><strong>Code:</strong> 200</li><ul><li>Connexion réussite !</li></ul></ul>                                        | <ul><li><strong>Code:</strong> 500</li><ul><li>Erreur lors de la requête !</li></ul></ul><ul><li><strong>Code:</strong> 400</li><ul><li>Connexion échouée, intervenant non trouvé !</li></ul></ul> |
+| Déconnexion                     | `/auth/logout`          | **GET**     |                                                                                                                                                                                                         |                                                                                                                                       | <ul><li><strong>Code:</strong> 200</li><ul><li>Déconnexion réussite !</li></ul></ul>                                      |                                                                                                                                                                                                    |
+| Intervernants                   | `/secure/interveners`   | **GET**     |                                                                                                                                                                                                         |                                                                                                                                       | <ul><li><strong>Code:</strong> 200</li><ul><li>Récupération des intervenants !</li></ul></ul>                             | <ul><li><strong>Code:</strong> 500</li><ul><li>Erreur lors de la requête !</li></ul></ul><ul><li><strong>Code:</strong> 400</li><ul><li>Base des intervenantes, vide !</li></ul></ul>              |
+| Interventions                   | `/secure/interventions` | **GET**     |                                                                                                                                                                                                         |                                                                                                                                       | <ul><li><strong>Code:</strong> 200</li><ul><li>Récupération des interventions !</li></ul></ul>                            | <ul><li><strong>Code:</strong> 500</li><ul><li>Erreur lors de la requête !</li></ul></ul><ul><li><strong>Code:</strong> 400</li><ul><li>Base des interventions, vide !</li></ul></ul>              |
+| Intervention                    | `/secure/intervention`  | **POST**    | <ul><li><strong>Requis:</strong></li><ul><li>code:[Number]</li><li>room:[String]</li><li>dateInterv:[String]</li><li>timeInterv:[String]</li><li>timeEntry:[String]</li><li>timeExit:[String]</li></ul> | `{ "code": [Number], "room": [String], "dateInterv": [String], "timeInterv": [String], "timeEntry": [String], "timeExit": [String] }` | <ul><li><strong>Code:</strong> 200</li><ul><li>Création (Intervention + QRCode + Envoi d'email) réussite !</li></ul></ul> | <ul><li><strong>Code:</strong> 500</li><ul><li>Erreur lors de la requête !</li></ul></ul><ul><li><strong>Code:</strong> 400</li><ul><li>Aucune intervention créé !</li></ul></ul>                  |
+| Intervention                    | `/secure/intervention`  | **PUT**     | <ul><li><strong>Requis:</strong></li><ul><li>code:[Number]</li><li>room:[String]</li></ul></ul>                                                                                                         | `{ "code": [Number], "room": [String] }`                                                                                              | <ul><li><strong>Code:</strong> 200</li><ul><li>Modification réussite !</li></ul></ul>                                     | <ul><li><strong>Code:</strong> 500</li><ul><li>Erreur lors de la requête !</li></ul></ul><ul><li><strong>Code:</strong> 400</li><ul><li>Aucune modification réalisé !</li></ul></ul>               |
+
 
 ### Tableau des évènements redoutés
 
 | Numéro de l'évènement | Evènement                                  | Impact pour l'entreprise                      | Gravité |
 | --------------------- | ------------------------------------------ | --------------------------------------------- | ------- |
-| 1                     | Une injection SQL donne un accès sans code | Problème de sécurité + Problème de confiance. | **      |
-| 2                     | API saturée (DDOS)                         | Problème de sécurité                          | **      |
-| 3                     | Le token n'est pas chiffré                 | Problème de sécurité                          | **      |
+| 1                     | Une injection SQL donne un accès sans code | Problème de sécurité + Problème de confiance. | \*\*    |
+| 2                     | API saturée (DDOS)                         | Problème de sécurité                          | \*\*    |
+| 3                     | Le token n'est pas chiffré                 | Problème de sécurité                          | \*\*    |
 
 \* : Modéré /
-** : Important
+\*\* : Important
 
 ### Diagramme UML des entités
 
@@ -66,7 +71,7 @@ module.exports = mongoose.model('interventions', interventionsScheme)
 
 #### User Story
 
-**En tant qu'intervenant, je veux avoir accès au service de la manière  la plus simple, afin d'être plus rapide dans l'exercice des interventions (réduction de temps).**
+**En tant qu'intervenant, je veux avoir accès au service de la manière la plus simple, afin d'être plus rapide dans l'exercice des interventions (réduction de temps).**
 
 **Mesure :** En tant que **développeur**, afin **de prendre en compte le critère de réduction de temps, dans la procédure d'intervention (connection, génération du QRCode ...), je réalise un refonte du site web, afin de transformer celui-ci en progressive web app, qui permettra d'avoir un accès rapide au service, dans l'optique fixé.**
 
@@ -92,32 +97,24 @@ const mongoose = require("mongoose");
 const { mongoURI } = process.env;
 
 exports.connect = () => {
+    mongoose
 
-	mongoose
+        .connect(mongoURI, {
+            useNewUrlParser: true,
 
-		.connect(mongoURI, {
+            useUnifiedTopology: true,
+        })
 
-			useNewUrlParser: true,
+        .then(() => {
+            console.log("Connexion à la base de donnée, réussite !");
+        })
 
-			useUnifiedTopology: true,
+        .catch((error) => {
+            console.log("La connexion a échouée !");
 
-		})
-
-		.then(() => {
-
-			console.log("Connexion à la base de donnée, réussite !");
-
-		})
-
-		.catch((error) => {
-
-			console.log("La connexion a échouée !");
-
-			console.error(error);
-
-		});
+            console.error(error);
+        });
 };
-
 ```
 
 ```js
