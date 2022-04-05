@@ -166,6 +166,7 @@ __metadata:
     jsonwebtoken: ^8.5.1
     mongoose: ^6.2.9
     morgan: ~1.10.0
+    nodemailer: ^6.7.3
     prettier: ^2.6.1
     qrcode: ^1.5.0
     stylus: 0.57.0
@@ -1345,6 +1346,13 @@ __metadata:
   version: 0.6.3
   resolution: "negotiator@npm:0.6.3"
   checksum: b8ffeb1e262eff7968fc90a2b6767b04cfd9842582a9d0ece0af7049537266e7b2506dfb1d107a32f06dd849ab2aea834d5830f7f4d0e5cb7d36e1ae55d021d9
+  languageName: node
+  linkType: hard
+
+"nodemailer@npm:^6.7.3":
+  version: 6.7.3
+  resolution: "nodemailer@npm:6.7.3"
+  checksum: b94d099f00f25666fc96a7cb498045e7428045b8cc0245ce10522190fd513b586d6e31305afd019f6878f1540d14d169d0dbe2e1f77385795c7054912d822ec0
   languageName: node
   linkType: hard
 

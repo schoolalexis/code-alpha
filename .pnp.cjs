@@ -45,6 +45,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jsonwebtoken", "npm:8.5.1"],\
             ["mongoose", "npm:6.2.9"],\
             ["morgan", "npm:1.10.0"],\
+            ["nodemailer", "npm:6.7.3"],\
             ["prettier", "npm:2.6.1"],\
             ["qrcode", "npm:1.5.0"],\
             ["stylus", "npm:0.57.0"]\
@@ -247,6 +248,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jsonwebtoken", "npm:8.5.1"],\
             ["mongoose", "npm:6.2.9"],\
             ["morgan", "npm:1.10.0"],\
+            ["nodemailer", "npm:6.7.3"],\
             ["prettier", "npm:2.6.1"],\
             ["qrcode", "npm:1.5.0"],\
             ["stylus", "npm:0.57.0"]\
@@ -1662,6 +1664,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/negotiator-npm-0.6.3-9d50e36171-b8ffeb1e26.zip/node_modules/negotiator/",\
           "packageDependencies": [\
             ["negotiator", "npm:0.6.3"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["nodemailer", [\
+        ["npm:6.7.3", {\
+          "packageLocation": "./.yarn/cache/nodemailer-npm-6.7.3-725d7440e3-b94d099f00.zip/node_modules/nodemailer/",\
+          "packageDependencies": [\
+            ["nodemailer", "npm:6.7.3"]\
           ],\
           "linkType": "HARD"\
         }]\

@@ -11,7 +11,7 @@ router.get("/", (req, res, next) => {
     if (token) {
         isConnect = true;
     }
-    res.render("auth", {
+    res.status(200).render("auth", {
         status: isConnect,
     });
 });

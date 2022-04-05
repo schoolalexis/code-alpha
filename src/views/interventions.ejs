@@ -20,6 +20,21 @@
             <td><%= intervention[i].timeEntry %></td>
             <td><%= intervention[i].timeExit %></td>
         </tr>
-        <% }} %>
+        <% }} else { %>
+        <p>Aucune interventions !</p>
+        <% } %>
     </table>
+    <hr />
+    <h3>Intervention :</h3>
+    <form action="/secure/intervention" method="post">
+        <div>
+            <label for="room">Room :</label>
+            <input type="text" name="room" id="room" placeholder="Enter the room !">
+        </div>
+        <div>
+            <label for="code">Code :</label>
+            <input type="text" name="code" id="code" placeholder="Enter your code !">
+        </div>
+        <button type="submit">New intervention !</button>
+    </form>
 </div>
